@@ -1,0 +1,11 @@
+{
+  "name": "chat",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "app": "node app.js"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
