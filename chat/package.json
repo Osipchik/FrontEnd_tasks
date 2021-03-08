@@ -4,6 +4,6 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "app": "node app.js"
+    "app": "node ./app.js"
   }
 }
