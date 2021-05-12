@@ -1,0 +1,116 @@
+.nav-bar {
+    grid-area: nav-bar;
+    width: var(--nav-bar-width);
+    background-color: var(--black); 
+    color: var(--white);
+    padding-top: 24px;
+}
+
+.logo-link {
+    margin-bottom: 24px;
+    padding: 0 24px;
+    flex: 1;
+}
+
+.logo {
+    height: 40px;
+    max-width: 131px;
+    width: 100%;
+}
+
+.main-nav-link {
+    height: 40px;
+    border-radius: var(--border-radius);
+    padding: 0 16px;
+}
+
+.nav-link-item {
+    padding: 0 8px;
+}
+
+.nav-link {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    transition: color 200ms linear
+}
+
+.nav-link:hover {
+    color: var(--white);
+}
+
+.nav-link-active {
+    color: var(--white);
+}
+
+.nav-link-text {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.home-icon {
+    margin-right: 16px;
+    display: block;
+    width: 24px;
+    height: 24px;
+}
+
+.link-subtitle {
+    color: var(--secondary);
+}
+
+.albums-group {
+    margin-top: 24px;
+}
+.group-button {
+    min-height: max-content;
+    display: flex;
+    padding: 5px 24px;
+    border: none;
+    align-items: center;
+    background-color: transparent;
+    color: var(--white);
+    cursor: pointer;
+    opacity: .7;
+    transition: opacity 200ms linear;
+}
+
+.group-button:hover {
+    opacity: 1;
+}
+
+.button-text {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.group-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 16px;
+    border-radius: 1px;
+    fill: currentColor;
+}
+
+.add-icon {
+    background-color: var(--white);
+    color: var(--black);
+}
+
+.like-icon {
+    background: linear-gradient(135deg, #450af5, #c4efd9);
+    color: var(--white);
+}
+
+.playlist-link {
+    display: flex;
+    color: #b3b3b3;
+    cursor: default;
+    text-decoration: none;
+    font-size: 14px;
+    height: 100%;
+}
+
+.playlist-link-wrapper {
+    height: 32px;
+}
