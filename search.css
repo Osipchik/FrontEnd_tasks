@@ -4,6 +4,7 @@
     border-radius: var(--border-radius);
     padding: 6px;
     width: 100%;
+    height: 34px;
 }
 
 .search-input {

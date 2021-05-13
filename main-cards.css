@@ -52,6 +52,18 @@
     opacity: 1;
 }
 
+.card .play-button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    opacity: 0;
+    transition: opacity 300ms ease;
+}
+
+.card:hover .play-button {
+    opacity: 1;
+}
+
 .main-card-image {
     aspect-ratio: 1;
     height: 100%;
