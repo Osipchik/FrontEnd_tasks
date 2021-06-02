@@ -1,0 +1,15 @@
+{
+  "name": "spotify",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "live-server src --verbose",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "firebase": "^8.6.2",
+    "firebase-tools": "^9.11.0"
+  }
+}
