@@ -1,0 +1,18 @@
+:root {
+    --black: #000;
+    --white: #FFF;
+
+    --bg-main: #121212;
+    --bg-card: #181818;
+    --secondary: #b3b3b3;
+    --green: #1DB954;
+
+    --bg-active: #282828;
+
+
+    --nav-bar-width: 324px;
+    --border-radius: 4px;
+
+    --mobile-width: 700px;
+    --header-height: 60px
+}
