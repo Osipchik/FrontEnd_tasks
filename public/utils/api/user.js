@@ -56,7 +56,9 @@ export const getAuthors = async () => {
 
     const dbRef = firebase.database().ref('users')
     await dbRef.once("value", users => {
-        users.forEach(user => authors.push({info: user.child('info').val()}))
+        users.forEach(user => {
+            authors.push({info: user.child('info').val()})
+        })
     })
 
     return authors

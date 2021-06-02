@@ -7,8 +7,6 @@ const Home = () => {
         const authors = await userAPI.getAuthors()
         const tracks = await userAPI.getTracks()
 
-        console.log(tracks)
-
         const [
             recent,
         ] = await Promise.all([

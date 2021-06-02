@@ -63,8 +63,9 @@ const Author = () => {
 
     const render = async ({resource, id, verb}, user) => { 
         userId = user?.uid  
+
         componentsHelper.setFullscreenStyle()
-        if (id === 'me' && userId) {
+        if (id === 'me') {
             id = userId
         }
 
@@ -76,7 +77,7 @@ const Author = () => {
             playlistAPI.getUserPlaylists(id, 'albums'),
         ])
 
-        if (!userPageInfo) {
+        if (!userPageInfo && id !== userId) {
             return '/404'
         }
 

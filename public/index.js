@@ -15,16 +15,26 @@ import componentsHelper from './utils/componentsHelper.js'
 import History from './store/history.js'
 import UserStore from './store/user.js'
 
+// const firebaseConfig = {
+//     apiKey: "AIzaSyCly8Bd4HXvU7PHFtkH9iyo784HYN9QLHU",
+//     authDomain: "spotify-db1cf.firebaseapp.com",
+//     projectId: "spotify-db1cf",
+//     storageBucket: "spotify-db1cf.appspot.com",
+//     messagingSenderId: "410564688987",
+//     appId: "1:410564688987:web:39c90092a57b309da6537e"
+// }
+
 const firebaseConfig = {
-    apiKey: "AIzaSyCly8Bd4HXvU7PHFtkH9iyo784HYN9QLHU",
-    authDomain: "spotify-db1cf.firebaseapp.com",
-    projectId: "spotify-db1cf",
-    storageBucket: "spotify-db1cf.appspot.com",
-    messagingSenderId: "410564688987",
-    appId: "1:410564688987:web:39c90092a57b309da6537e"
+    apiKey: "AIzaSyCJGGlHPbhTt0kMGQElpelIE09XUCPVOgA",
+    authDomain: "spa-app-fa4b0.firebaseapp.com",
+    databaseURL: "https://spa-app-fa4b0-default-rtdb.firebaseio.com",
+    projectId: "spa-app-fa4b0",
+    storageBucket: "spa-app-fa4b0.appspot.com",
+    messagingSenderId: "12922765030",
+    appId: "1:12922765030:web:d89d2bbbbff97f9bc28527"
   };
 
- firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
 
 const routes = {
     '/': {
