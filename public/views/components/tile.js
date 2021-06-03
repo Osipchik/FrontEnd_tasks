@@ -1,6 +1,9 @@
 import DomObserver from '../../utils/observer.js'
 import routeHelper from '../../utils/routeHelper.js'
 import { DEFAULT_IMAGE } from '../../utils/genres.js'
+import PlayButton from './play-button.js'
+import * as playlistAPI from '../../utils/api/playlist.js'
+import Player from '../components/player.js'
 
 const styles = {
     card: {
@@ -41,20 +44,11 @@ cardType = 'card') => {
     const tileUrl = routeHelper.getUrl(type, authorId, type ? id : albumId)
     let observerId
 
-    const play = (event) => {
-        event.stopPropagation()
-        console.log('play: ', id)
-    }
-
-    const playButton = (type, authorName) => {
+    const playButton = async (type, authorName) => {
         if ((type === 'card' || type === 'music') && authorName) {
-            return `
-                <button id="play-${id}" class="play-button">
-                    <svg height="16" role="img" width="16" viewBox="0 0 24 24">
-                        <polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor"></polygon>
-                    </svg>
-                </button>
-            `
+            const track = await playlistAPI.getFirstTrack(authorId, albumId)
+
+            return track ? PlayButton(track).render() : ''
         }
 
         return ''
@@ -69,7 +63,7 @@ cardType = 'card') => {
             <div id="${id}" class="${classes.container}">
                 <div class="${classes.imageContainer} ${cardImageStyle}">
                     <img loading="lazy" src="${imageUrl || albumImage || DEFAULT_IMAGE}" class="card-image">
-                    ${playButton(cardType, authorName)}
+                    ${await playButton(cardType, authorName)}
                 </div>
                 <div class="${classes.info}">
                     <a href="${tileUrl}" class="${classes.title} text-cut-one-line">
@@ -89,14 +83,10 @@ cardType = 'card') => {
 
     const afterRender = () => {
         const tile = document.getElementById(id)
-        const playButton = document.getElementById(`play-${id}`)
 
         if (tile) {
             DomObserver.removeCallback(observerId)
             tile.onclick = () => window.location = tileUrl
-            if (playButton) {
-                playButton.onclick = play
-            }
         }
     }
 

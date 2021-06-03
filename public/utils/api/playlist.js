@@ -77,3 +77,11 @@ export const addTrackToPlaylist = async (track, playlistId, userId) => {
         }
     })
 }
+
+export const getFirstTrack = async (authorId, albumId) => {
+    const ref = firebase.database().ref(`users/${authorId}/albums/${albumId}`)
+    const tracks = await ref.child('tracks').once('value')
+    const tracksList = Object.values(tracks.val() || {})
+
+    return tracksList.length !== 0 ? tracksList[0] : null 
+}

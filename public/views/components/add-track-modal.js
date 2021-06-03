@@ -3,14 +3,22 @@ import { GENRES, DEFAULT_IMAGE } from '../../utils/genres.js'
 
 const AddTrackModal = (onSave, {name = 'new track', genre = 'rock', id, lyrics = ''} = {}) => {
     const setModalListener = (modalContainer) => {
-        GENRES.forEach(i => document.getElementById(i).onclick = () => {
+        let trackFile
+        
+        GENRES.forEach(genreName => document.getElementById(genreName).onclick = () => {
             document.getElementById(genre).classList.remove('genre-button-active')
-            document.getElementById(i).classList.add('genre-button-active')
-            genre = i
+            document.getElementById(genreName).classList.add('genre-button-active')
+            genre = genreName
         })
+
+        document.getElementById('upload-track').onclick = () => document.getElementById('track-uploads').click()
 
         document.getElementById('modal-close').onclick = () => {
             modalContainer.innerHTML = ''
+        }
+
+        document.getElementById('track-uploads').onchange = (event) => {
+            trackFile = event.target.files[0]
         }
 
         document.getElementById('modal-save').classList.add('bottom-row')
@@ -28,7 +36,7 @@ const AddTrackModal = (onSave, {name = 'new track', genre = 'rock', id, lyrics =
                 data.id = id
             }
 
-            const res = await onSave(data)
+            const res = await onSave(trackFile, data)
 
             if (res) {
                 modalContainer.innerHTML = ''
@@ -40,9 +48,14 @@ const AddTrackModal = (onSave, {name = 'new track', genre = 'rock', id, lyrics =
         const modalContainer = document.getElementById('modal')
 
         const modalBody = `
-            <div id="upload-image" class="upload-image">
+            <div id="upload-track" class="upload-image">
+                <div class="file-placeholder">
+                    <div class="image-label">
+                        <p class="centre">Выбрать файл</p>
+                    </div>
+                </div>
                 <img src="${imageUrl}" id="uploaded-img" class="centre uploaded-image">
-                <input class="image-uploads" type="file" id="image_uploads" name="image_uploads" accept="image/jpeg, image/png, image/webp">
+                <input class="image-uploads" required type="file" id="track-uploads" name="track-uploads" accept=".mp3">
             </div>
             <div class="modal-text-input-container modal-name-input">
                 <input id="modal-name" type="text" class="modal-text-input modal-text" value="${name}">

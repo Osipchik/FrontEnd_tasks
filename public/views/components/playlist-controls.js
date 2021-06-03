@@ -1,6 +1,6 @@
 import DomObserver from '../../utils/observer.js'
 
-const PlaylistControls = (onPlayClick, onButtonClick, addTrack) => {
+const PlaylistControls = (onButtonClick, addTrack) => {
     let observerId
 
     const getButton = async (buttonId, buttonText, handler) => {
@@ -38,7 +38,6 @@ const PlaylistControls = (onPlayClick, onButtonClick, addTrack) => {
         const view = `
             <div class="gradient-bottom" style="background-color:${color}"></div>
             <div class="playlist-control mobile-hide">
-                ${playButton(hidePlayButton)}
                 ${await getButton('change-button', buttonText, onButtonClick)}
                 ${await getButton('add-button',secondButtonText, addTrack)}
             </div>
@@ -52,9 +51,12 @@ const PlaylistControls = (onPlayClick, onButtonClick, addTrack) => {
     const afterRender = () => {
         const changeButton = document.getElementById('change-button')
         
-        if (changeButton) {
+        if (changeButton && onButtonClick) {
             DomObserver.removeCallback(observerId)
             changeButton.addEventListener('click', onButtonClick)
+        }
+
+        if (addTrack) {
             document.getElementById('add-button')?.addEventListener('click', addTrack)
         }
     }

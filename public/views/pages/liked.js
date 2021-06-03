@@ -17,10 +17,8 @@ const Liked = () => {
     const routeData = {}
     let playlistTracksList
 
-    const click = () => console.log('click')
-
     const savePlaylistChanges = async (image, data) => {
-        const imageUrl = await storageHelper.uploadImage(image)
+        const imageUrl = await storageHelper.uploadFile(image)
         data.imageUrl = imageUrl || data.imageUrl
 
         const trackData = {
@@ -43,9 +41,16 @@ const Liked = () => {
         return true
     }
 
-    const saveTrack = async (track) => {
+    const saveTrack = async (file, track) => {
+        if (!file) {
+            alert('Добавьте файл трека')
+
+            return false
+        }
+
         const data = {
             ...track,
+            trackUrl: await storageHelper.uploadFile(file),
             albumName: playlistInfo.name,
             albumImage: playlistInfo.imageUrl,
             authorName: playlistInfo.authorName,
@@ -62,7 +67,10 @@ const Liked = () => {
         EditModal(playlistInfo, savePlaylistChanges).render('Изменить альбом')
     }
 
-    const editTrack = async (data) => {
+    const editTrack = async (file, data) => {
+        const trackUrl = await storageHelper.uploadFile(file)
+        data.trackUrl = trackUrl || data.trackUrl
+
         await Promise.all([
             albumAPI.updateTrack(userId, playlistInfo.id, data),
             userAPI.updateUsersTracks(data, data.id)
@@ -118,7 +126,7 @@ const Liked = () => {
         playlistInfo = playlist.val?.info
         routeHelper.setRouteData(routeData, {resource, id, verb, uid: user?.uid})
         const tracks = Object.values(playlist.val?.tracks || {})
-        const controls = componentsHelper.getControls(user, playlist, click, editPlaylist, createTrack, removePlaylist)
+        const controls = componentsHelper.getControls(user, playlist, editPlaylist, createTrack, removePlaylist)
 
         const isTracksEditable = playlistInfo.type === 'album' && user?.uid === playlist.parent
 

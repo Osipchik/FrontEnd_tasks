@@ -45,14 +45,14 @@ const setFullscreenStyle = () => {
     content.classList.add('liked-container')
 }
 
-const getControls = (user, playlist, onPlayClick, editPlaylist, addTrack, removePlaylist) => {
+const getControls = (user, playlist, editPlaylist, addTrack, removePlaylist) => {
     if (playlist.val && user?.uid === playlist.parent) {
         return playlist.val.info.type === 'playlist' 
-            ? PlaylistControls(onPlayClick, editPlaylist, removePlaylist)
-            : PlaylistControls(onPlayClick, editPlaylist, addTrack)
+            ? PlaylistControls(editPlaylist, removePlaylist)
+            : PlaylistControls(editPlaylist, addTrack)
     }
 
-    return PlaylistControls(onPlayClick)
+    return PlaylistControls()
 }
 
 export default {

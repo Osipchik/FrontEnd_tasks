@@ -1,6 +1,14 @@
 import LyricsModal from '../components/lyrics-modal.js'
+import PlayButton from './play-button.js'
 
-const TrackList = ({tracks = [], showHead = true, editTrack, addToPlaylist, removeTrack}) =>{
+
+const TrackList = ({
+    tracks = [], 
+    showHead = true, 
+    editTrack, 
+    addToPlaylist, 
+    removeTrack
+}) =>{
     const header = () => {
         return `
             <div class="grid-row track-list-header">
@@ -88,6 +96,7 @@ const TrackList = ({tracks = [], showHead = true, editTrack, addToPlaylist, remo
                     <div class="grid-row track-list-item">
                         <div class="grid-index">
                             ${index + 1}
+                            ${PlayButton(track, 'pure-play-button').render()}
                         </div>
                         <div class="grid-name">
                             <img src="${track.albumImage}" class="album-image-small"/>

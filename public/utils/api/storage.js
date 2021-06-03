@@ -1,6 +1,6 @@
 import generateUid from '../generateUid.js'
 
-const uploadImage = async (file) => {
+const uploadFile = async (file) => {
     if (file) {
         const ref = firebase.storage().ref().child(generateUid());
         const snapshot = await ref.put(file)
@@ -10,5 +10,5 @@ const uploadImage = async (file) => {
 }
 
 export default {
-    uploadImage,
+    uploadFile,
 }

@@ -12,29 +12,33 @@ export const searchData = (searchValue, callback) => {
     const recentPostsRef = firebase.database().ref('users');
     recentPostsRef.on('value', users => {
         users.forEach(user => {
-            if (user.child('info/name').val().toLowerCase() === searchValue) {
-                result.best = user.val()
-                result.best.type = 'author'
-            } else if (user.child('info/name').val().toLowerCase().includes(searchValue)) {
-                result.authors.push({...(user.val()), type: "author"})
-            }
-
-            user.child('albums').forEach(album => {
-                if (album.child('info/name').val().toLowerCase() === searchValue) {
-                    result.best = album.val()
-                    result.best.type = 'album'
-                } else if (album.child('info/name').val().toLowerCase().includes(searchValue)) {
-                    result.albums.push(album.val())
+            if (user.hasChild('info')) {
+                if (user.child('info/name').val().toLowerCase() === searchValue) {
+                    result.best = user.val()
+                    result.best.type = 'author'
+                } else if (user.child('info/name').val().toLowerCase().includes(searchValue)) {
+                    result.authors.push({...(user.val()), type: "author"})
                 }
-
-                album.child('tracks').forEach(track => {
-                    if (track.child('name').val().toLowerCase() === searchValue) {
-                        result.best = track.val()
-                    } else if (track.child('name').val().toLowerCase().includes(searchValue)) {
-                        result.tracks.push(track.val())
-                    }
-                })
-            })
+    
+                if (user.hasChild('albums')) {
+                    user.child('albums').forEach(album => {
+                        if (album.child('info/name').val().toLowerCase() === searchValue) {
+                            result.best = album.val()
+                            result.best.type = 'album'
+                        } else if (album.child('info/name').val().toLowerCase().includes(searchValue)) {
+                            result.albums.push(album.val())
+                        }
+        
+                        album.child('tracks').forEach(track => {
+                            if (track.child('name').val().toLowerCase() === searchValue) {
+                                result.best = track.val()
+                            } else if (track.child('name').val().toLowerCase().includes(searchValue)) {
+                                result.tracks.push(track.val())
+                            }
+                        })
+                    })
+                }
+            }
         })
 
         callback(result)

@@ -297,6 +297,7 @@ h1, h2, h3, h4, p {
     border-radius: var(--border-radius);
     padding: 8px 16px;
     transition: all 150ms linear;
+    position: relative;
 }
 
 .track-list-item:hover {
@@ -308,6 +309,11 @@ h1, h2, h3, h4, p {
 .track-list-item:hover .track-author {
     color: var(--white);
 }
+
+.track-list-item:hover .pure-play-button {
+    display: block;
+}
+
 
 .track-duration {
     margin-right: 10px;
@@ -328,6 +334,24 @@ h1, h2, h3, h4, p {
 .track-list-title {
     padding: 0 16px;
     margin-bottom: 16px;
+}
+
+.pure-play-button {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    background-color: transparent;
+    box-shadow: none;
+    width: auto;
+    height: auto;
+    cursor: pointer;
+}
+
+.pure-play-button svg {
+    width: 28px;
+    height: 28px;
 }
 
 .dark-header {

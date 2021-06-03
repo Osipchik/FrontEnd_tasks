@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "server": "live-server public --verbose",
     "test": "echo \"Error: no test specified\" && exit 1"
   }
 }

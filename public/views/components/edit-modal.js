@@ -7,14 +7,11 @@ const EditModal = ({
     color = '#5038B4',
     imageUrl,
 }, onSave) => {
-    const callImageUploader = () => {
-        document.getElementById('image_uploads').click()
-    }
-    
-    const setModalListener = (modalContainer, imageUrl) => {
+    const setModalListener = (modalContainer) => {
         let image
 
-        document.getElementById('upload-image').addEventListener('click', callImageUploader)
+        document.getElementById('upload-image').onclick = () => document.getElementById('image_uploads').click()
+
         document.getElementById('image_uploads').onchange = (event) => {
             image = event.target.files[0]
             const url = URL.createObjectURL(image)
@@ -30,7 +27,6 @@ const EditModal = ({
             const description = document.getElementById('modal-description')?.value.trim()
             const color = document.getElementById('modal-color-piker').value
             const data = {
-                imageUrl: imageUrl,
                 name,
                 color
             }
@@ -76,7 +72,7 @@ const EditModal = ({
         `
 
         modalContainer.innerHTML = Modal(title, modalBody)
-        setModalListener(modalContainer, imageUrl)
+        setModalListener(modalContainer)
     }
 
     return {

@@ -1,0 +1,89 @@
+.player {
+    grid-area: player-bar;
+    background-color: var(--bg-active);
+    color: var(--white);
+    height: 90px;
+    padding: 15px;
+    display: flex;
+    position: relative;
+}
+
+.player-hide {
+    display: none;
+}
+
+.player-track-image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+}
+
+.player-track-container {
+    display: flex;
+    gap: 15px;
+}
+
+.player-track-info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.player-track-name {
+    font-size: 16px;
+}
+
+.player-author {
+    color: var(--secondary);
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.audio {
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+}
+
+.audio-controls {
+    width: 30vw;
+    min-width: 300px;
+}
+
+@media screen and (max-width: 700px) {
+    .player {
+        height: 47px;
+        margin-bottom: 47px;
+        padding: 0;
+    }
+
+    .player-track-image {
+        height: 47px;
+        width: 47px;
+    }
+
+    .player-track-container {
+        gap: 5px;
+    }
+
+    .player-track-name {
+        font-size: 14px;
+    }
+    
+    .player-author {
+        font-size: 12px;
+    }
+
+    .audio {
+        margin: 6px auto 0;
+        position: inherit;
+    }
+
+    .audio-controls {
+        height: 30px;
+        width: 245px;
+        min-width: unset;
+    }
+}
