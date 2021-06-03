@@ -23,6 +23,13 @@
     width: 100%;
 }
 
+.centre {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .centrefy {
     display: flex;
     justify-content: center;

@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="playlists.css"/>
     <link rel="stylesheet" href="liked.css"/>
     <link rel="stylesheet" href="index.css"/>
+    <link rel="stylesheet" href="modal.css"/>
 </head>
 <body>
     <div id="root" class="root-container">
@@ -1141,6 +1142,76 @@
                     </svg>
                 </div>
                 Плейлисты
+            </div>
+        </div>
+    </div>
+    <div id="modal">
+        <div class="modal-container">
+            <div class="modal">
+                <div class="modal-header">
+                    <h2 class="modal-title">
+                        Добавить трек
+                    </h2>
+                    <button id="modal-close" class="modal-close-button">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0.929688 15.0699L15.0697 0.929932M0.929688 0.929932L15.0697 15.0699L0.929688 0.929932Z" stroke="#B3B3B3" stroke-miterlimit="10"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    
+        <div id="upload-track" class="upload-image">
+            <div class="file-placeholder">
+                <div class="image-label">
+                    <p class="centre">Выбрать файл</p>
+                </div>
+            </div>
+            <img src="https://firebasestorage.googleapis.com/v0/b/spa-app-fa4b0.appspot.com/o/215a90a0-d52b-4380-a804-1e0de32ca470?alt=media&amp;token=0e53ae14-106c-4179-96c5-924cf27747a5" id="uploaded-img" class="centre uploaded-image">
+            <input class="image-uploads" required="" type="file" id="track-uploads" name="track-uploads" accept=".mp3">
+        </div>
+        <div class="modal-text-input-container modal-name-input">
+            <input id="modal-name" type="text" class="modal-text-input modal-text" value="new track">
+        </div>
+        <div class="genre-container">
+            
+                <button id="rock" class="genre-button genre-button-active">
+                    rock
+                </button>
+
+                <button id="alternative" class="genre-button false">
+                    alternative
+                </button>
+
+                <button id="punk" class="genre-button false">
+                    punk
+                </button>
+
+                <button id="space rock" class="genre-button false">
+                    space rock
+                </button>
+
+                <button id="indie" class="genre-button false">
+                    indie
+                </button>
+
+                <button id="rap" class="genre-button false">
+                    rap
+                </button>
+
+                <button id="classic" class="genre-button false">
+                    classic
+                </button>
+
+                <button id="pop" class="genre-button false">
+                    pop
+                </button>
+        </div>
+        <textarea id="modal-lyrics" class="modal-text-input-container modal-textarea modal-lyrics" rows="8">            </textarea>
+    
+                    <button id="modal-save" class="modal-save-button bottom-row">
+                        Сохранить
+                    </button>
+                </div>
             </div>
         </div>
     </div>
